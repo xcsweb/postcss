@@ -22,12 +22,13 @@ let styleArr=[ styleLoader,
                             modules: true,
                             importLoaders: 1
     }},
-    { loader: 'postcss-loader', options: { ident: 'postcss', plugins: () => [ require('postcss-preset-env')()  ] } },
-    "sass-loader"
+    "postcss-loader",
+    // { loader: 'postcss-loader', options: { ident: 'postcss', plugins: () => [ require('postcss-preset-env')()  ] } },
     ];
 let styleArr1=[ styleLoader,
     "css-loader",
-    { loader: 'postcss-loader', options: { ident: 'postcss', plugins: () => [ require('postcss-preset-env')()  ] } },
+    "postcss-loader",
+    // { loader: 'postcss-loader', options: { ident: 'postcss', plugins: () => [ require('postcss-preset-env')()  ] } },
     "sass-loader"]
 module.exports={
     mode:mode,
