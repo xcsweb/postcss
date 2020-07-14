@@ -4,6 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCssAssetsWebpackPlugin= require('optimize-css-assets-webpack-plugin' );
 const TerserWebpackPlugin = require('terser-webpack-plugin');
+const CompressionWebpackPlugin = require('compression-webpack-plugin');
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const webpack =require("webpack");
@@ -106,9 +107,15 @@ module.exports={
             "@":path.resolve(__dirname,"./src")
         }
     },
+    
     plugins:[
         new CleanWebpackPlugin({
             cleanAfterEveryBuildPatterns: ['dist','dist/css','dist/js']
+        }),
+        new CompressionWebpackPlugin({
+            test: /\.js$|\.html$|\.css$/,
+            // 超过4kb压缩
+            threshold: 4096
         }),
         new MiniCssExtractPlugin({ 
             filename: './css/[name].[contenthash:6].css',
